@@ -21,15 +21,10 @@ end
 a = (x + im*y)/sqrt(2)
 coef = map(i -> a^i/factorial(big(i)),0:(No-1))
 
-mystate = disk_normalize(bilayer_state(basis, coef))
+mystate = bilayer_state(basis, coef)
 #printwf(mystate)
 
 
 # Get the density
 disk_density(mystate,"coherent_$(No)o_$(x)_$(y)_$(S)")
-end
-
-print("Save state? "); saveyn = parse(Bool, readline())
-if saveyn
-	printwf(mystate;fname="coherent_$(No)o_$(x)_$(y)_$(S).vec")
 end

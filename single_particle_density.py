@@ -4,7 +4,7 @@ from scipy.special import gamma
 from time import time
 
 def single_particle_function(m,s):
-	return lambda z: z**(m+s) * np.exp(-abs(z)**2)
+	return lambda z: z**(m+s) * np.exp(-abs(z)**2) #/ np.sqrt(2*np.pi*2**m * gamma(m+s+1))
 
 def density_distribution(positions, m, s):
 	wf = single_particle_function(m,s)
@@ -26,13 +26,13 @@ def plot_density(m,s):
 sqfactorial = lambda x: np.prod(np.sqrt(np.arange(1,x+1)))
 
 def translation_coefficient(a,m):
-	return np.prod(a/np.arange(1,m+1)) # The factor 1/10 is to avoid big number in the factorial
+	return np.prod(a*np.sqrt(2)/np.arange(1,m+1)) # The factor 1/10 is to avoid big number in the factorial
 	
 # Params:
 No = 16
 xp  = 3
 yp  = 0
-a  = (xp + 1j*yp)
+a  = (xp + 1j*yp)/2
 
 s = 0.5 # Shift: either 0 or 0.5
 
@@ -47,7 +47,7 @@ N = 100 # Number of points along each axis
 x = np.linspace(-Rmax,Rmax,N)
 y = np.linspace(-Rmax,Rmax,N)
 X, Y = np.meshgrid(x,y)
-U = (X + 1j * Y)/2
+U = (X + 1j * Y)/(2*np.sqrt(2))
 D = np.zeros((N,N))
 
 st = time() # Time the for loop

@@ -1,5 +1,5 @@
-include("/home/trung/_qhe-julia/FQH_bilayer.jl")
-include("/home/trung/_qhe-julia/FQH_state_v2.jl")
+include("/home/hqtr/QHE_Julia/FQH_bilayer.jl")
+include("/home/hqtr/QHE_Julia/FQH_state_v2.jl")
 using .FQH_states
 using .BilayerFQH
 
